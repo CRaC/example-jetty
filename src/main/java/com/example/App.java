@@ -24,7 +24,6 @@ class ServerManager implements Resource {
         server.setHandler(handler);
         server.start();
         Core.getGlobalContext().register(this);
-        server.join();
     }
 
     @Override
@@ -56,5 +55,6 @@ public class App extends AbstractHandler
 
     public static void main( String[] args ) throws Exception {
         serverManager = new ServerManager(8080, new App());
+        serverManager.server.join();
     }
 }
